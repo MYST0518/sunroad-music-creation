@@ -3,368 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>クレアモール川越サンロード商店街 ミュージッククリエイション</title>
-  <meta name="description" content="ついに始動！地元川越サンロード商店街が全面協力。ラジオ川越「モーニング・ミスト」がお届けする、お店・会社のオリジナルBGM・テーマソングをリスナーとともに制作するミュージックコンペ企画。">
+  <title>サンロード商店街 ミュージッククリエイション｜参加店舗・企業 募集中</title>
+  <meta name="description" content="クレアモール川越サンロード商店街の店舗・企業向け。全国のミュージシャンがあなたのお店のテーマソング・BGMを制作します。ラジオ川越「モーニング・ミスト」共同企画。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --red: #e8293a;
-      --gold: #f5b800;
-      --navy: #1a1f3a;
-      --deep: #0d1020;
-      --teal: #00c9b1;
-      --purple: #7c3aed;
-      --white: #ffffff;
-      --text-soft: #cbd5e1;
+      --red: #e8293a; --gold: #f5b800; --navy: #12172e; --deep: #090d1c;
+      --teal: #00c9b1; --purple: #7c3aed; --white: #fff; --soft: #94a3b8;
     }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--deep); color: var(--white); overflow-x: hidden; }
 
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      background: var(--deep);
-      color: var(--white);
-      overflow-x: hidden;
-    }
+    .rainbow { height: 7px; background: linear-gradient(90deg,#ff6b6b,#ffd93d,#6bcb77,#4d96ff,#c77dff,#ff6b6b); background-size: 200%; animation: rs 3s linear infinite; }
+    @keyframes rs { to { background-position: 200% 0; } }
 
-    /* ========== RAINBOW STRIPE ========== */
-    .rainbow-stripe {
-      height: 8px;
-      background: linear-gradient(90deg,
-        #ff6b6b 0%, #ffd93d 16%, #6bcb77 33%,
-        #4d96ff 50%, #c77dff 66%, #ff6b6b 83%, #ffd93d 100%);
-      background-size: 200% 100%;
-      animation: stripeScroll 3s linear infinite;
-    }
-    @keyframes stripeScroll {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 200% 0%; }
-    }
-
-    /* ========== NAV ========== */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(13,16,32,0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 0.8rem 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo {
-      font-size: 0.85rem; font-weight: 700;
-      color: var(--gold); letter-spacing: 0.05em;
-    }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(9,13,28,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.07); padding: .75rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: .82rem; font-weight: 700; color: var(--gold); }
     .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a {
-      color: var(--text-soft); text-decoration: none; font-size: 0.85rem;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a { color: var(--soft); text-decoration: none; font-size: .82rem; transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
 
-    /* ========== HERO ========== */
-    .hero {
-      min-height: 100vh;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,41,58,0.25) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(124,58,237,0.2) 0%, transparent 60%),
-        linear-gradient(180deg, #0d1020 0%, #1a1f3a 100%);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 4rem 1.5rem 6rem;
-      position: relative; overflow: hidden;
-    }
+    /* HERO */
+    .hero { min-height: 100vh; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(232,41,58,.28) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 90% 100%, rgba(124,58,237,.18) 0%, transparent 60%), linear-gradient(180deg,#0d1020,#12172e); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5rem 1.5rem; position: relative; overflow: hidden; }
+    .notes-bg { position: absolute; inset: 0; pointer-events: none; }
+    .note { position: absolute; opacity: .07; animation: fn linear infinite; }
+    @keyframes fn { 0%{transform:translateY(110vh) rotate(0deg);opacity:0} 10%{opacity:.07} 90%{opacity:.07} 100%{transform:translateY(-20vh) rotate(360deg);opacity:0} }
 
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-    }
+    .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: linear-gradient(135deg,var(--red),#ff6b35); color: #fff; font-weight: 900; font-size: .88rem; padding: .45rem 1.2rem; border-radius: 100px; letter-spacing: .1em; margin-bottom: 1.8rem; animation: pb 2s ease-in-out infinite; box-shadow: 0 0 30px rgba(232,41,58,.5); }
+    @keyframes pb { 0%,100%{box-shadow:0 0 20px rgba(232,41,58,.4)} 50%{box-shadow:0 0 50px rgba(232,41,58,.8)} }
 
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: linear-gradient(135deg, var(--red), #ff6b35);
-      color: white; font-weight: 900; font-size: 0.9rem;
-      padding: 0.5rem 1.2rem; border-radius: 100px;
-      letter-spacing: 0.1em; margin-bottom: 2rem;
-      animation: pulse-badge 2s ease-in-out infinite;
-      box-shadow: 0 0 30px rgba(232,41,58,0.5);
-    }
-    @keyframes pulse-badge {
-      0%, 100% { box-shadow: 0 0 20px rgba(232,41,58,0.4); }
-      50% { box-shadow: 0 0 40px rgba(232,41,58,0.8); }
-    }
+    .hero-eyebrow { font-size: .88rem; color: var(--gold); font-weight: 700; letter-spacing: .15em; margin-bottom: 1rem; }
+    .hero h1 { font-family: 'Outfit', 'Noto Sans JP', sans-serif; font-size: clamp(2rem,5.5vw,4rem); font-weight: 900; line-height: 1.15; margin-bottom: 1rem; background: linear-gradient(135deg,#fff 0%,#f5b800 55%,#ff6b6b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-tagline { font-size: clamp(1rem,2.5vw,1.3rem); color: var(--soft); max-width: 640px; line-height: 1.9; margin-bottom: .75rem; }
+    .hero-tagline strong { color: #fff; }
+    .hero-target-note { display: inline-block; background: rgba(245,184,0,.12); border: 1px solid rgba(245,184,0,.35); color: var(--gold); font-size: .88rem; font-weight: 700; padding: .5rem 1.2rem; border-radius: 8px; margin: 1rem 0 2.5rem; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn-primary { display: inline-flex; align-items: center; gap: .5rem; background: linear-gradient(135deg,var(--red),#ff6b35); color: #fff; text-decoration: none; font-weight: 900; font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 100px; box-shadow: 0 8px 32px rgba(232,41,58,.4); transition: transform .2s, box-shadow .2s; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(232,41,58,.6); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); color: #fff; text-decoration: none; font-weight: 700; font-size: 1rem; padding: 1rem 2rem; border-radius: 100px; transition: transform .2s, background .2s; }
+    .btn-ghost:hover { transform: translateY(-3px); background: rgba(255,255,255,.13); }
 
-    .hero-eyebrow {
-      font-size: clamp(0.85rem, 2vw, 1rem);
-      color: var(--gold); font-weight: 700;
-      letter-spacing: 0.15em; margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      font-size: clamp(1.8rem, 5vw, 3.5rem);
-      font-weight: 900; line-height: 1.2;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #ffffff 0%, #f5b800 60%, #ff6b6b 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: var(--text-soft); max-width: 650px;
-      line-height: 1.8; margin-bottom: 3rem;
-    }
-
-    .hero-sub strong { color: var(--gold); }
-
-    .hero-cta-group {
-      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
-    }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: linear-gradient(135deg, var(--red), #ff6b35);
-      color: white; text-decoration: none; font-weight: 900;
-      font-size: 1.1rem; padding: 1rem 2.5rem;
-      border-radius: 100px;
-      box-shadow: 0 8px 32px rgba(232,41,58,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-      letter-spacing: 0.05em;
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 48px rgba(232,41,58,0.6);
-    }
-
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: white; text-decoration: none; font-weight: 700;
-      font-size: 1rem; padding: 1rem 2rem;
-      border-radius: 100px;
-      transition: transform 0.2s, background 0.2s;
-    }
-    .btn-secondary:hover {
-      transform: translateY(-3px);
-      background: rgba(255,255,255,0.15);
-    }
-
-    /* floating notes */
-    .notes-bg {
-      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-    }
-    .note {
-      position: absolute; font-size: 2rem; opacity: 0.08;
-      animation: floatNote linear infinite;
-    }
-    @keyframes floatNote {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.08; }
-      90% { opacity: 0.08; }
-      100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
-    }
-
-    /* ========== SECTIONS ========== */
+    /* SECTIONS */
     section { padding: 5rem 1.5rem; }
-
     .container { max-width: 900px; margin: 0 auto; }
+    .label { font-size: .75rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
+    .sec-title { font-size: clamp(1.5rem,4vw,2.2rem); font-weight: 900; line-height: 1.3; margin-bottom: 1.5rem; }
+    .sec-body { color: var(--soft); font-size: 1rem; line-height: 2; }
+    .divider { height: 1px; background: linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent); }
 
-    .section-label {
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
+    /* HOW IT WORKS */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; position: relative; }
+    .step-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: 2rem 1.5rem; text-align: center; transition: transform .3s, border-color .3s; }
+    .step-card:hover { transform: translateY(-6px); border-color: rgba(245,184,0,.3); }
+    .step-num { font-size: .75rem; font-weight: 900; letter-spacing: .15em; color: var(--gold); margin-bottom: .75rem; }
+    .step-icon { font-size: 2.8rem; margin-bottom: 1rem; display: block; }
+    .step-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .6rem; }
+    .step-card p { color: var(--soft); font-size: .88rem; line-height: 1.8; }
 
-    .section-title {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 900; line-height: 1.3;
-      margin-bottom: 1.5rem;
-    }
+    /* AUDIENCE SPLIT */
+    .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    @media(max-width:640px){ .audience-grid { grid-template-columns: 1fr; } }
+    .audience-card { border-radius: 24px; padding: 2.5rem; }
+    .audience-store { background: linear-gradient(135deg, rgba(232,41,58,.15), rgba(245,184,0,.08)); border: 2px solid rgba(232,41,58,.4); }
+    .audience-creator { background: linear-gradient(135deg, rgba(124,58,237,.12), rgba(0,201,177,.08)); border: 1px solid rgba(124,58,237,.25); }
+    .audience-badge { display: inline-block; font-size: .75rem; font-weight: 700; padding: .3rem .9rem; border-radius: 100px; margin-bottom: 1.2rem; letter-spacing: .1em; }
+    .badge-store { background: rgba(232,41,58,.3); color: #fca5a5; }
+    .badge-creator { background: rgba(124,58,237,.3); color: #c4b5fd; }
+    .audience-card h3 { font-size: 1.3rem; font-weight: 900; margin-bottom: 1rem; }
+    .audience-card ul { list-style: none; }
+    .audience-card ul li { color: var(--soft); font-size: .92rem; line-height: 1; padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.05); display: flex; align-items: flex-start; gap: .6rem; }
+    .audience-card ul li:last-child { border-bottom: none; }
+    .audience-card ul li::before { content: '✓'; color: var(--gold); font-weight: 900; flex-shrink: 0; margin-top: .05rem; }
+    .store-cta { margin-top: 1.8rem; display: block; text-align: center; background: linear-gradient(135deg,var(--red),#ff6b35); color: #fff; text-decoration: none; font-weight: 900; padding: .85rem 1.5rem; border-radius: 100px; font-size: .95rem; transition: transform .2s, box-shadow .2s; box-shadow: 0 6px 20px rgba(232,41,58,.35); }
+    .store-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(232,41,58,.5); }
 
-    .section-body {
-      color: var(--text-soft); font-size: 1rem;
-      line-height: 2; max-width: 700px;
-    }
+    /* SPONSORSHIP */
+    .sponsor-box { background: linear-gradient(135deg, rgba(245,184,0,.1), rgba(232,41,58,.06)); border: 1px solid rgba(245,184,0,.25); border-radius: 20px; padding: 2rem 2.5rem; margin-top: 2rem; }
+    .sponsor-box h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: var(--gold); }
+    .sponsor-box p { color: var(--soft); line-height: 1.9; font-size: .95rem; }
+    .sponsor-box strong { color: #fff; }
 
-    /* ========== LAUNCH ANNOUNCEMENT ========== */
-    .launch {
-      background: linear-gradient(135deg, rgba(232,41,58,0.12), rgba(245,184,0,0.06));
-      border-left: 4px solid var(--red);
-      border-radius: 0 16px 16px 0;
-      padding: 2rem 2.5rem;
-      margin-bottom: 2rem;
-    }
-    .launch p { color: var(--text-soft); line-height: 2; font-size: 1.05rem; }
-    .launch p strong { color: var(--white); }
+    /* RADIO */
+    .radio-card { background: linear-gradient(135deg, rgba(124,58,237,.15), rgba(0,201,177,.07)); border: 1px solid rgba(124,58,237,.3); border-radius: 24px; padding: 2.5rem; display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; }
+    .radio-icon { font-size: 4rem; flex-shrink: 0; }
+    .radio-tag { display: inline-block; background: rgba(124,58,237,.3); color: #c4b5fd; font-size: .78rem; font-weight: 700; padding: .25rem .8rem; border-radius: 100px; margin-bottom: 1rem; }
+    .radio-info h3 { font-size: 1.4rem; font-weight: 900; margin-bottom: .4rem; }
+    .radio-info p { color: var(--soft); line-height: 1.9; font-size: .95rem; }
 
-    /* ========== FEATURE CARDS ========== */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem; margin-top: 3rem;
-    }
+    /* ACHIEVEMENT */
+    .achievement-link-card { background: linear-gradient(135deg, rgba(0,201,177,.1), rgba(77,150,255,.07)); border: 1px solid rgba(0,201,177,.25); border-radius: 20px; padding: 2.5rem; text-decoration: none; color: inherit; display: block; transition: transform .3s, box-shadow .3s; }
+    .achievement-link-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,201,177,.14); }
+    .ach-badge { display: inline-block; background: linear-gradient(135deg,var(--teal),#4d96ff); color: #fff; font-size: .75rem; font-weight: 700; padding: .3rem 1rem; border-radius: 100px; letter-spacing: .1em; margin-bottom: 1rem; }
+    .achievement-link-card h3 { font-size: 1.4rem; font-weight: 900; margin-bottom: .75rem; }
+    .achievement-link-card p { color: var(--soft); line-height: 1.9; font-size: .95rem; margin-bottom: 1.2rem; }
+    .ach-arrow { color: var(--teal); font-weight: 700; font-size: .95rem; }
 
-    .feature-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px; padding: 2rem;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-    .feature-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(245,184,0,0.3);
-    }
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, rgba(232,41,58,.14), rgba(245,184,0,.07), rgba(124,58,237,.1)); border-top: 1px solid rgba(255,255,255,.05); text-align: center; padding: 6rem 1.5rem; }
+    .cta-section h2 { font-size: clamp(1.6rem,4vw,2.6rem); font-weight: 900; margin-bottom: .75rem; line-height: 1.3; }
+    .cta-target-note { display: inline-block; background: rgba(232,41,58,.15); border: 1px solid rgba(232,41,58,.35); color: #fca5a5; font-size: .88rem; font-weight: 700; padding: .4rem 1.2rem; border-radius: 8px; margin-bottom: 1.5rem; }
+    .cta-section p { color: var(--soft); font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.9; }
 
-    .feature-icon {
-      font-size: 2.5rem; margin-bottom: 1rem;
-      display: block;
-    }
+    footer { padding: 3rem 1.5rem; text-align: center; color: rgba(255,255,255,.28); font-size: .82rem; line-height: 2; }
+    footer a { color: rgba(255,255,255,.35); }
 
-    .feature-card h3 {
-      font-size: 1.1rem; font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-
-    .feature-card p {
-      color: var(--text-soft); font-size: 0.9rem; line-height: 1.8;
-    }
-
-    /* ========== DIVIDER ========== */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      margin: 0 1.5rem;
-    }
-
-    /* ========== RADIO SECTION ========== */
-    .radio-card {
-      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(0,201,177,0.08));
-      border: 1px solid rgba(124,58,237,0.3);
-      border-radius: 24px; padding: 2.5rem;
-      display: flex; gap: 2rem; align-items: flex-start;
-      flex-wrap: wrap;
-    }
-
-    .radio-icon-wrap {
-      font-size: 4rem; flex-shrink: 0;
-    }
-
-    .radio-info h3 {
-      font-size: 1.4rem; font-weight: 900; margin-bottom: 0.3rem;
-    }
-
-    .radio-tag {
-      display: inline-block;
-      background: rgba(124,58,237,0.3);
-      color: #c4b5fd; font-size: 0.8rem; font-weight: 700;
-      padding: 0.25rem 0.8rem; border-radius: 100px;
-      margin-bottom: 1rem;
-    }
-
-    .radio-info p {
-      color: var(--text-soft); line-height: 1.9; font-size: 0.95rem;
-    }
-
-    /* ========== ACHIEVEMENT ========== */
-    .achievement-card {
-      background: linear-gradient(135deg, rgba(0,201,177,0.1), rgba(77,150,255,0.08));
-      border: 1px solid rgba(0,201,177,0.25);
-      border-radius: 24px; overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-decoration: none; color: inherit;
-      display: block;
-    }
-    .achievement-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,201,177,0.15);
-    }
-
-    .achievement-inner { padding: 2.5rem; }
-
-    .achievement-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--teal), #4d96ff);
-      color: white; font-size: 0.75rem; font-weight: 700;
-      padding: 0.3rem 1rem; border-radius: 100px;
-      letter-spacing: 0.1em; margin-bottom: 1.2rem;
-    }
-
-    .achievement-card h3 {
-      font-size: 1.5rem; font-weight: 900; margin-bottom: 0.75rem;
-    }
-
-    .achievement-card p {
-      color: var(--text-soft); line-height: 1.9; font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .achievement-link {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      color: var(--teal); font-weight: 700; font-size: 0.95rem;
-    }
-
-    /* ========== CTA SECTION ========== */
-    .cta-section {
-      background: linear-gradient(135deg, rgba(232,41,58,0.15), rgba(245,184,0,0.08), rgba(124,58,237,0.1));
-      border-top: 1px solid rgba(255,255,255,0.06);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      text-align: center; padding: 6rem 1.5rem;
-    }
-
-    .cta-section h2 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 900; margin-bottom: 1rem;
-      line-height: 1.3;
-    }
-
-    .cta-section p {
-      color: var(--text-soft); font-size: 1.05rem;
-      margin-bottom: 2.5rem; line-height: 1.9;
-    }
-
-    /* ========== FOOTER ========== */
-    footer {
-      padding: 3rem 1.5rem;
-      text-align: center;
-      color: rgba(255,255,255,0.3);
-      font-size: 0.85rem;
-    }
-
-    footer a { color: rgba(255,255,255,0.4); }
-
-    /* ========== FADE IN ========== */
-    .fade-in {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible {
-      opacity: 1; transform: translateY(0);
-    }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .radio-card { flex-direction: column; }
-    }
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @media(max-width:600px){ .nav-links{display:none;} }
   </style>
 </head>
 <body>
-
-<div class="rainbow-stripe"></div>
+<div class="rainbow"></div>
 
 <nav>
   <div class="nav-logo">🎵 川越サンロード ミュージッククリエイション</div>
   <ul class="nav-links">
-    <li><a href="#about">企画概要</a></li>
+    <li><a href="#how">仕組み</a></li>
+    <li><a href="#store">参加店舗へ</a></li>
     <li><a href="#radio">ラジオ川越</a></li>
-    <li><a href="#achievement">過去の実績</a></li>
+    <li><a href="#achievement">実績</a></li>
     <li><a href="#apply">応募する</a></li>
   </ul>
 </nav>
@@ -372,63 +131,105 @@
 <!-- HERO -->
 <section class="hero">
   <div class="notes-bg" id="notesBg"></div>
-
-  <div class="hero-badge">🚀 ついに始動！！</div>
-  <div class="hero-eyebrow">Radio Kawagoe × Sunroad Shopping Street</div>
-  <h1>クレアモール川越<br>サンロード商店街<br>ミュージッククリエイション</h1>
-  <p class="hero-sub">
-    地元川越サンロード商店街が<strong>全面協力</strong>。<br>
-    ラジオ川越「モーニング・ミスト」がお届けする、<br>
-    商店街のオリジナルBGM・テーマソングを<strong>リスナーとともに制作</strong>する、<br>
-    前代未聞のミュージックコンペ企画がここに始動！
-  </p>
-  <div class="hero-cta-group">
-    <a href="https://forms.gle/ne5FEY39uyL4Zr777" target="_blank" class="btn-primary" id="hero-apply-btn">
-      📝 応募フォームはこちら
-    </a>
-    <a href="#about" class="btn-secondary">
-      📖 企画を詳しく見る
-    </a>
+  <div class="hero-badge">🚀 参加店舗・企業 募集開始！</div>
+  <div class="hero-eyebrow">クレアモール川越サンロード商店街 × ラジオ川越</div>
+  <h1>あなたのお店に、<br>オリジナル音楽を。</h1>
+  <p class="hero-tagline">全国のミュージシャンが、<strong>あなたのお店・会社のテーマソングやBGM</strong>を制作します。<br>地元川越が誇る、前代未聞のミュージックコンペ企画がついに始動！！</p>
+  <div class="hero-target-note">📣 このサイトは <strong>参加を希望する店舗・企業の方</strong> 向けの情報ページです</div>
+  <div class="hero-cta">
+    <a href="https://forms.gle/ne5FEY39uyL4Zr777" target="_blank" class="btn-primary" id="hero-apply-btn">📝 参加申込フォームへ（店舗・企業向け）</a>
+    <a href="#how" class="btn-ghost">📖 仕組みを見る</a>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ABOUT -->
-<section id="about">
+<!-- HOW IT WORKS -->
+<section id="how">
   <div class="container">
-    <p class="section-label fade-in">About the Project</p>
-    <h2 class="section-title fade-in">商店街に、音楽を。</h2>
+    <p class="label fade-in">How It Works</p>
+    <h2 class="sec-title fade-in">企画の仕組み</h2>
+    <p class="sec-body fade-in">この企画は、<strong style="color:#fff">お店が音楽を依頼する側、全国のミュージシャンが制作する側</strong>という新しい形のコンペです。</p>
 
-    <div class="launch fade-in">
-      <p>
-        ラジオ川越「モーニング・ミスト」では、毎週月曜日の放送の中で<strong>全国のお店・会社を音楽で応援</strong>してきました。<br><br>
-        そして今回、ついに<strong>地元・川越クレアモールサンロード商店街が全面協力</strong>。<br>
-        商店街のオリジナルBGM・テーマソングを、リスナーさんたちとコンテスト形式で制作する<strong>全く新しい形のミュージックコンペ企画</strong>が始動します。
-      </p>
+    <div class="steps">
+      <div class="step-card fade-in">
+        <div class="step-num">STEP 01</div>
+        <span class="step-icon">🏬</span>
+        <h3>店舗・企業が参加申込</h3>
+        <p>サンロード商店街の店舗・企業がフォームから参加を申し込みます。テーマや雰囲気のご要望をお知らせください。</p>
+      </div>
+      <div class="step-card fade-in">
+        <div class="step-num">STEP 02</div>
+        <span class="step-icon">🎸</span>
+        <h3>全国のミュージシャンが制作</h3>
+        <p>AI・非AIを問わず、全国各地のミュージシャンがお店のテーマソング・BGMを制作して応募します。</p>
+      </div>
+      <div class="step-card fade-in">
+        <div class="step-num">STEP 03</div>
+        <span class="step-icon">📻</span>
+        <h3>ラジオで紹介・投票</h3>
+        <p>作品はラジオ川越「モーニング・ミスト」で紹介。リスナーとともに最優秀作品を選びます。</p>
+      </div>
+      <div class="step-card fade-in">
+        <div class="step-num">STEP 04</div>
+        <span class="step-icon">🏆</span>
+        <h3>優秀作品が決定</h3>
+        <p>選ばれたミュージシャンには、参加店舗・企業から提供いただいた協賛品が贈られます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- AUDIENCE SPLIT -->
+<section id="store">
+  <div class="container">
+    <p class="label fade-in">For Stores &amp; Creators</p>
+    <h2 class="sec-title fade-in">参加者の役割</h2>
+
+    <div class="audience-grid">
+      <!-- 店舗向け -->
+      <div class="audience-card audience-store fade-in">
+        <span class="audience-badge badge-store">🏬 店舗・企業の方</span>
+        <h3>音楽を作ってもらう側</h3>
+        <ul>
+          <li>オリジナルのテーマソング・BGMが完成</li>
+          <li>ラジオで全国に店舗をPR</li>
+          <li>協賛品を提供（賞品として活用）</li>
+          <li>業種・規模問わず参加OK</li>
+          <li>参加費用は協賛品のみ</li>
+        </ul>
+        <a href="https://forms.gle/ne5FEY39uyL4Zr777" target="_blank" class="store-cta" id="store-apply-btn">
+          📝 参加申込フォームへ →
+        </a>
+      </div>
+
+      <!-- クリエイター向け -->
+      <div class="audience-card audience-creator fade-in">
+        <span class="audience-badge badge-creator">🎵 ミュージシャンの方</span>
+        <h3>音楽を制作する側</h3>
+        <ul>
+          <li>全国どこからでも応募可能</li>
+          <li>AI・非AI問わず参加OK</li>
+          <li>優秀作品に協賛品が贈られる</li>
+          <li>ラジオで作品が全国放送</li>
+          <li>クリエイター向け募集は後日公開</li>
+        </ul>
+        <p style="margin-top:1.5rem; font-size:.82rem; color:var(--soft); border-top: 1px solid rgba(255,255,255,.06); padding-top:1rem;">
+          ※ミュージシャン向けの応募フォームは店舗参加確定後に別途公開予定です。
+        </p>
+      </div>
     </div>
 
-    <div class="feature-grid">
-      <div class="feature-card fade-in">
-        <span class="feature-icon">🏬</span>
-        <h3>商店街と共創</h3>
-        <p>川越クレアモールサンロード商店街が全面バックアップ。地域と音楽が一体となる新しいプロジェクトです。</p>
-      </div>
-      <div class="feature-card fade-in">
-        <span class="feature-icon">🎧</span>
-        <h3>リスナーが審査員</h3>
-        <p>応募された楽曲をラジオ番組内でご紹介し、リスナーさんとともにコンテスト形式で選考します。</p>
-      </div>
-      <div class="feature-card fade-in">
-        <span class="feature-icon">📻</span>
-        <h3>ラジオで全国発信</h3>
-        <p>ラジオ川越は全国どこからでも無料で聴取可能。あなたの楽曲が全国のリスナーに届きます。</p>
-      </div>
-      <div class="feature-card fade-in">
-        <span class="feature-icon">🌏</span>
-        <h3>業種・地域不問</h3>
-        <p>日本全国、どの業種の方でもご応募いただけます。プロ・アマ問わず、あなたの音楽を聴かせてください！</p>
-      </div>
+    <!-- 協賛品について -->
+    <div class="sponsor-box fade-in">
+      <h3>🎁 協賛品について</h3>
+      <p>
+        参加いただく店舗・企業には、コンペの<strong>賞品となる協賛品のご提供</strong>をお願いしています。<br>
+        協賛品はお店の商品・サービス・ギフト券など、何でも構いません。<br>
+        協賛品はラジオ放送・Webサイトでクレジット表記されるため、<strong>お店のPR効果</strong>にもつながります。
+      </p>
     </div>
   </div>
 </section>
@@ -438,19 +239,17 @@
 <!-- RADIO -->
 <section id="radio">
   <div class="container">
-    <p class="section-label fade-in">About Radio Kawagoe</p>
-    <h2 class="section-title fade-in">ラジオ川越<br>「モーニング・ミスト」とは</h2>
-
+    <p class="label fade-in">Media Partner</p>
+    <h2 class="sec-title fade-in">ラジオ川越<br>「モーニング・ミスト」</h2>
     <div class="radio-card fade-in">
-      <div class="radio-icon-wrap">📻</div>
+      <div class="radio-icon">📻</div>
       <div class="radio-info">
         <h3>ラジオ川越「モーニング・ミスト」</h3>
         <span class="radio-tag">毎週月曜日 8:30〜11:00</span>
         <p>
           全国のお店・会社を音楽で応援する人気ラジオプログラム。<br>
-          お店や会社のオリジナルBGM・テーマソングを、リスナーさんとコンテスト形式で制作し、番組内でもご紹介。<br><br>
-          日本全国どの業種の方でもご応募いただけます。<br>
-          ラジオ川越は<strong>全国どこからでも無料</strong>でお聴きいただけます！
+          お店・会社のオリジナルBGM・テーマソングをリスナーとコンテスト形式で制作し、番組内で紹介。<br><br>
+          ラジオ川越は<strong>全国どこからでも無料</strong>で聴取可能。あなたのお店が全国のリスナーに届きます。
         </p>
       </div>
     </div>
@@ -462,24 +261,16 @@
 <!-- ACHIEVEMENT -->
 <section id="achievement">
   <div class="container">
-    <p class="section-label fade-in">Past Achievement</p>
-    <h2 class="section-title fade-in">過去の実績</h2>
-    <p class="section-body fade-in" style="margin-bottom: 2rem;">
-      今回の川越サンロード企画の前身となる実績をご紹介します。<br>
-      日光・レコードカフェタイムで行われた春のBGMコンテストでは、全国から多くのクリエイターが参加し大きな反響を呼びました。
+    <p class="label fade-in">Past Achievement</p>
+    <h2 class="sec-title fade-in">過去の実績</h2>
+    <p class="sec-body fade-in" style="margin-bottom:2rem;">
+      日光・レコードカフェタイムで実施した春のBGMコンテストでは、全国からクリエイターが参加し大反響。今回の川越サンロード企画へとつながった実績です。
     </p>
-
-    <a href="https://myst0518.github.io/Record-Cafe-Time-Spring-BGM/" target="_blank" class="achievement-card fade-in">
-      <div class="achievement-inner">
-        <span class="achievement-badge">✅ 実施済みプロジェクト</span>
-        <h3>🌸 レコードカフェタイム<br>春のBGMコンテスト</h3>
-        <p>
-          日光のレコードカフェタイムと連携して実施した春のBGMコンテスト。<br>
-          全国から応募されたオリジナル楽曲をリスナーが体験・投票できるWeb試聴プレイヤーを展開。<br>
-          今回の川越サンロード企画へとつながる重要な実績です。
-        </p>
-        <span class="achievement-link">🎵 試聴プレイヤーを見る →</span>
-      </div>
+    <a href="https://myst0518.github.io/Record-Cafe-Time-Spring-BGM/" target="_blank" class="achievement-link-card fade-in">
+      <span class="ach-badge">✅ 実施済みプロジェクト</span>
+      <h3>🌸 レコードカフェタイム 春のBGMコンテスト（日光）</h3>
+      <p>全国から集まったミュージシャンの楽曲をWeb試聴プレイヤーで公開。リスナー投票による選考を実施。この成功体験が今回の川越サンロード企画の原点です。</p>
+      <span class="ach-arrow">🎵 試聴プレイヤーを見る →</span>
     </a>
   </div>
 </section>
@@ -489,48 +280,36 @@
 <!-- CTA -->
 <section class="cta-section" id="apply">
   <div class="container">
-    <h2 class="fade-in">あなたの音楽で、<br>川越を盛り上げよう。</h2>
+    <h2 class="fade-in">あなたのお店の音楽を、<br>全国のミュージシャンと作ろう。</h2>
+    <div class="cta-target-note fade-in">📣 以下は <strong>参加希望の店舗・企業の方向け</strong> 応募フォームです</div>
     <p class="fade-in">
-      クレアモール川越サンロード商店街のテーマソング・BGM制作に挑戦しませんか？<br>
-      プロ・アマ問わず、日本全国から広く応募を受け付けています。
+      クレアモール川越サンロード商店街の店舗・企業の方はこちらからご参加ください。<br>
+      ご不明な点はフォーム内のお問い合わせ欄にご記入ください。
     </p>
     <a href="https://forms.gle/ne5FEY39uyL4Zr777" target="_blank" class="btn-primary fade-in" id="cta-apply-btn">
-      📝 今すぐ応募フォームへ
+      📝 店舗・企業 参加申込フォームへ
     </a>
   </div>
 </section>
 
 <footer>
   <p>クレアモール川越サンロード商店街 ミュージッククリエイション</p>
-  <p style="margin-top: 0.5rem;">Supported by ラジオ川越「モーニング・ミスト」</p>
+  <p>Supported by ラジオ川越「モーニング・ミスト」</p>
 </footer>
 
 <script>
-  // Floating notes
-  const notesBg = document.getElementById('notesBg');
-  const noteChars = ['♩','♪','♫','♬','🎵','🎶','🎼'];
-  for (let i = 0; i < 20; i++) {
-    const note = document.createElement('div');
-    note.className = 'note';
-    note.textContent = noteChars[Math.floor(Math.random() * noteChars.length)];
-    note.style.left = Math.random() * 100 + '%';
-    note.style.animationDuration = (8 + Math.random() * 12) + 's';
-    note.style.animationDelay = (Math.random() * 10) + 's';
-    note.style.fontSize = (1.5 + Math.random() * 2) + 'rem';
-    notesBg.appendChild(note);
-  }
-
-  // Fade in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  const bg = document.getElementById('notesBg');
+  '♩♪♫♬🎵🎶🎼'.split('').forEach((c,i) => {
+    for(let j=0;j<3;j++){
+      const n=document.createElement('div');
+      n.className='note';
+      n.textContent=c;
+      n.style.cssText=`left:${Math.random()*100}%;font-size:${1.5+Math.random()*2}rem;animation-duration:${9+Math.random()*12}s;animation-delay:${Math.random()*12}s;`;
+      bg.appendChild(n);
+    }
+  });
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 </script>
-
 </body>
 </html>
